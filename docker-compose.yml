@@ -7,20 +7,20 @@ services:
     networks:
       - cloud_app_net
       - cloud_db_net
-     
+
   db:
     image: mariadb:11.4
-    containe_name: cloud_db
+    container_name: cloud_db
     environment:
       MARIADB_DATABASE: cloud
       MARIADB_USER: cloud_user
       MARIADB_PASSWORD: cloud_pass
       MARIADB_ROOT_PASSWORD: root_pass
     networks:
-      -cloud_db_net
-  networks:
-    cloud_app_net:
-      driver: bridge
-    cloud_db_net:
-      drive: bridge
-      
+      - cloud_db_net
+
+networks:
+  cloud_app_net:
+    driver: bridge
+  cloud_db_net:
+    driver: bridge      
