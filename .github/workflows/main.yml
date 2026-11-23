@@ -1,1 +1,30 @@
-hola
+name: Validar y simular deploy
+
+on:
+  push:
+    branches: ["main"]
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: preparar repositorio
+        uses: actions/checkout@v4
+      - name: "Prueba 1 Estructura"
+        run: |
+          test -d app
+          test -f app/index.php
+          test -f Dockerfile
+          test -f docker-compose.yml
+      - name: configuracion compose
+        run: docker compose config -q
+
+
+
+
+
+
+
+
+
